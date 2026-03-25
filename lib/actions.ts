@@ -27,7 +27,7 @@ export async function createProfile(formData: FormData) {
     })
 
     if (error) {
-        return { error: error.message }
+        throw new Error(error.message)
     }
 
     redirect('/dashboard')
@@ -54,7 +54,7 @@ export async function updateProfile(formData: FormData) {
     }).eq('email', user.email);
 
     if (error) {
-        return { error: error.message }
+        throw new Error(error.message)
     }
 
     redirect('/dashboard/profile')
