@@ -4,7 +4,7 @@ import { LuAlarmSmoke, LuHouse, LuUser } from 'react-icons/lu'
 
 const Sidebar = () => {
   return (
-    <aside className="w-[225px] p-4 flex flex-col gap-4 items-center">
+    <aside className="w-[225px] p-4 hidden md:flex flex-col gap-4 items-center">
                 
                 <h2 className="flex items-center gap-1 text-3xl tracking-tighter font-bold"><LuAlarmSmoke /> Primus</h2>
 

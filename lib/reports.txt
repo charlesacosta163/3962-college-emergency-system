@@ -1,0 +1,75 @@
+export type Report = {
+    reportType: string
+    reportDescription: string
+    location: string
+    dateOfReport: string
+    timeOfReport: string
+    reporterName: string
+}
+
+export const reports: Report[] = [
+    {
+        reportType: 'Medical Emergency',
+        reportDescription: 'Student collapsed near the library entrance, unresponsive.',
+        location: 'Main Library',
+        dateOfReport: '2026-03-10',
+        timeOfReport: '09:14:00',
+        reporterName: 'James Carter',
+    },
+    {
+        reportType: 'Fire Hazard',
+        reportDescription: 'Smoke detected coming from a trash can in the east hallway.',
+        location: 'Engineering Building - East Hall',
+        dateOfReport: '2026-03-12',
+        timeOfReport: '13:45:00',
+        reporterName: 'Sofia Nguyen',
+    },
+    {
+        reportType: 'Campus Threat',
+        reportDescription: 'Suspicious individual spotted near the parking lot carrying an unidentified bag.',
+        location: 'Parking Lot C',
+        dateOfReport: '2026-03-15',
+        timeOfReport: '07:30:00',
+        reporterName: 'Marcus Williams',
+    },
+    {
+        reportType: 'Natural Disaster',
+        reportDescription: 'Flash flood warning issued; water accumulating near the science building basement.',
+        location: 'Science Building',
+        dateOfReport: '2026-03-18',
+        timeOfReport: '16:20:00',
+        reporterName: 'Aaliyah Torres',
+    },
+    {
+        reportType: 'Infrastructure Failure',
+        reportDescription: 'Power outage affecting the entire north wing of the student center.',
+        location: 'Student Center - North Wing',
+        dateOfReport: '2026-03-20',
+        timeOfReport: '11:05:00',
+        reporterName: 'Ethan Brooks',
+    },
+    {
+        reportType: 'Medical Emergency',
+        reportDescription: 'Student experiencing severe allergic reaction in the cafeteria.',
+        location: 'Cafeteria',
+        dateOfReport: '2026-03-21',
+        timeOfReport: '12:32:00',
+        reporterName: 'Priya Patel',
+    },
+    {
+        reportType: 'Campus Threat',
+        reportDescription: 'Graffiti with threatening language found on the administration building wall.',
+        location: 'Administration Building',
+        dateOfReport: '2026-03-22',
+        timeOfReport: '08:50:00',
+        reporterName: 'Derek Owens',
+    },
+    {
+        reportType: 'Fire Hazard',
+        reportDescription: 'Fire alarm triggered in the chemistry lab; possible chemical reaction.',
+        location: 'Chemistry Lab 204',
+        dateOfReport: '2026-03-23',
+        timeOfReport: '14:15:00',
+        reporterName: 'Lena Kim',
+    },
+]

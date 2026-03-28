@@ -6,7 +6,7 @@ import { LuGraduationCap, LuPencil, LuPhoneCall } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
 const ProfilePage = async () => {
-  const {data: profile} = await getUserProfile()
+  const profile = await getUserProfile()
 
   return (
     <div className='flex items-center justify-center h-full'>

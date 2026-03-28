@@ -19,12 +19,22 @@ export async function isLoggedIn() {
     return user !== null
 }
 
+export async function getAllUsers() {
+    const supabase = await createClient()
+    const { data, error } = await supabase.from('user_profiles').select('*')
+    if (error) {
+        throw new Error(error.message)
+    }
+    return data
+}
+
 export async function getUserProfile() {
     const user = await getUser()
 
     if (!user) {
         redirect('/auth/login')
        }
+
     
     const supabase = await createClient()
     const { data, error } = await supabase.from('user_profiles').select('*').eq('email', user.email).single()
@@ -32,5 +42,5 @@ export async function getUserProfile() {
     if (error) 
         redirect('/set-up-profile')
 
-    return { success: true, data: data }
+    return data
 }

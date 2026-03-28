@@ -3,12 +3,12 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 import { getUserProfile } from '@/lib/supabase/user-actions'
-import { updateProfile } from '@/lib/actions'
+import { updateProfile } from '@/lib/profile-actions'
 
 import { LuPencil } from 'react-icons/lu'
 
 const EditProfilePage = async () => {
-    const {data: profile} = await getUserProfile()
+    const profile = await getUserProfile()
 
     return (
         <main className='flex items-center justify-center h-full'>

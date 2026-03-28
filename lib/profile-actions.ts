@@ -4,6 +4,22 @@ import { redirect } from "next/navigation"
 import { createClient } from "./supabase/server"
 import { getUser } from "./supabase/user-actions";
 
+export async function getUserProfile() {
+    const user = await getUser();
+    if (!user) {
+        redirect('/auth/login')
+    }
+    
+    const supabase = await createClient();
+    const { data, error } = await supabase.from('user_profiles').select('*').eq('email', user.email).single();
+
+    if (error) {
+        redirect('/set-up-profile')
+    }
+
+    return data;
+}
+
 export async function createProfile(formData: FormData) {
 
     const user = await getUser();

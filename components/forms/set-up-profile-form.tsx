@@ -1,6 +1,6 @@
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
-import { createProfile } from "@/lib/actions"
+import { createProfile } from "@/lib/profile-actions"
 import SubmitProfileButton from "./buttons/submit-profile-button"
 
 const SetUpProfileForm = () => {
