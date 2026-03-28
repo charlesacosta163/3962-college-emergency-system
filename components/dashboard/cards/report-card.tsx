@@ -66,6 +66,13 @@ const priorityBorderColors = {
   'high': 'border-red-500',
   'critical': 'border-purple-500'
 }
+
+const statusColors = {
+  'pending': 'bg-yellow-500',
+  'active': 'bg-green-500',
+  'resolved': 'bg-pink-600',
+  'rejected': 'bg-gray-500'
+}
   
 const ReportCard = ({ report, users }: any) => {
     const user = users.find((user: any) => user.id === report.reporter_id)
@@ -73,6 +80,7 @@ const ReportCard = ({ report, users }: any) => {
     const TypeIcon = typeConfig.icon
     const priorityColor = priorityColors[report.priority as keyof typeof priorityColors] || priorityColors['medium']
     const priorityBorder = priorityBorderColors[report.priority as keyof typeof priorityBorderColors] || priorityBorderColors['medium']
+    const statusColor = statusColors[report.status as keyof typeof statusColors] || statusColors['pending']
 
   return (
     <div className={cn('p-4 rounded-[25px] rounded-l-none border-l-8 border-t-2 border-b-2 border-r-2 flex flex-col md:flex-row gap-4', priorityBorder)}>
@@ -99,7 +107,7 @@ const ReportCard = ({ report, users }: any) => {
                                     <div><LuCalendar className='inline'/> Date Posted: <span className='font-medium'>{getDateAndTime(report.created_at || '').date}</span></div>
                                     <div><LuClock className='inline'/> Time: <span className='font-medium'>{getDateAndTime(report.created_at || '').time}</span></div>
                                     <div><LuTriangleAlert className='inline'/> Priority: <Badge className={priorityColor}>{report.priority}</Badge></div>
-                                    <div><LuClipboardList className='inline'/> Status: <span className='font-medium'>{report.status}</span></div>
+                                    <div><LuClipboardList className='inline'/> Status: <Badge className={statusColor}>{report.status}</Badge></div>
                                     <div className='col-span-1 md:col-span-2'><LuMapPin className='inline'/> Location: <span className='font-medium'>{report.location}</span></div>
 
                                 </main>

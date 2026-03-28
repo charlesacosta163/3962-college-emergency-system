@@ -114,7 +114,7 @@ const UserSubmittedCard = ({ report }: UserSubmittedCardProps) => {
         
        </div>
       
-       <Button variant='outline'><LuPencil />Edit Report Feature Soon</Button>
+       <Button variant='outline'><LuPencil />Edit Report</Button>
 
     </div>
   )
