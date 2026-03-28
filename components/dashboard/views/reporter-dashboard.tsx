@@ -69,7 +69,7 @@ const ReporterDashboard = async () => {
                     
                     <h2 className='text-2xl font-bold tracking-tight mb-4 text-blue-500'>Your Submitted Reports</h2>
 
-                    <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
                         {reports.map((report: any , index: number) => (
                             <UserSubmittedCard key={index} report={report} />

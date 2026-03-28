@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import React from 'react'
 
-import { LuBriefcaseMedical, LuFlame, LuBuilding, LuSun, LuShield, LuMessageCircle, LuTriangleAlert, LuPencil, LuClipboardList } from "react-icons/lu";
+import { LuBriefcaseMedical, LuFlame, LuBuilding, LuSun, LuShield, LuMessageCircle, LuTriangleAlert, LuPencil, LuClipboardList, LuMapPin } from "react-icons/lu";
 import { BsIncognito } from "react-icons/bs";
 
 type UserSubmittedCardProps = {
@@ -102,7 +102,7 @@ const UserSubmittedCard = ({ report }: UserSubmittedCardProps) => {
           {report.description}
        </main>
 
-       <div className='grid grid-cols-2 gap-2'>
+       <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 
         <span className='px-4 py-2 rounded-md bg-gray-100 flex items-center gap-2 text-sm font-medium'>
           <LuClipboardList />Status: <Badge className={`${statusColor} animate-pulse`}>{report.status}</Badge>
@@ -110,6 +110,7 @@ const UserSubmittedCard = ({ report }: UserSubmittedCardProps) => {
         <span className='px-4 py-2 rounded-md bg-gray-100 flex items-center gap-2 text-sm font-medium'>
           <LuTriangleAlert /> Priority: <Badge className={priorityColor}>{report.priority}</Badge>
         </span>
+        <span className='px-4 py-2 rounded-md bg-gray-100 flex items-center gap-2 text-sm font-medium col-span-1 md:col-span-2'><LuMapPin className='inline'/> Location: <span className='font-medium'>{report.location}</span></span>
         
        </div>
       

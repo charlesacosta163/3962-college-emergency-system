@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '@/lib/utils';
 
-import { LuBriefcaseMedical, LuClock, LuCalendar, LuTriangleAlert, LuClipboardList, LuSun, LuMessageCircle, LuShield, LuBuilding, LuFlame } from "react-icons/lu";
+import { LuBriefcaseMedical, LuClock, LuCalendar, LuTriangleAlert, LuClipboardList, LuSun, LuMessageCircle, LuShield, LuBuilding, LuFlame, LuMapPin } from "react-icons/lu";
 import { BsIncognito } from "react-icons/bs";
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
@@ -100,6 +100,7 @@ const ReportCard = ({ report, users }: any) => {
                                     <div><LuClock className='inline'/> Time: <span className='font-medium'>{getDateAndTime(report.created_at || '').time}</span></div>
                                     <div><LuTriangleAlert className='inline'/> Priority: <Badge className={priorityColor}>{report.priority}</Badge></div>
                                     <div><LuClipboardList className='inline'/> Status: <span className='font-medium'>{report.status}</span></div>
+                                    <div className='col-span-1 md:col-span-2'><LuMapPin className='inline'/> Location: <span className='font-medium'>{report.location}</span></div>
 
                                 </main>
 
@@ -111,7 +112,7 @@ const ReportCard = ({ report, users }: any) => {
 
                                 <Accordion type="single" collapsible defaultValue="item-1">
                                     <AccordionItem value="item-1">
-                                        <AccordionTrigger className='text-xl font-bold tracking-tight'><div className='flex items-center gap-2'><LuMessageCircle /> Description</div></AccordionTrigger>
+                                        <AccordionTrigger className='text-xl font-bold tracking-tight'><div className='flex items-center gap-2'><LuMessageCircle /> Message</div></AccordionTrigger>
                                         <AccordionContent className='bg-gray-50 rounded-lg p-4 font-medium'>
                                             {report.description}
                                         </AccordionContent>
