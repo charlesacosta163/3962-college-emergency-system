@@ -40,7 +40,80 @@ const reportTypes = [
     {id: 7, name: 'Other', icon: LuMessageCircle, color: 'text-gray-400'   },
 ]
 
-const SubmitReportForm = () => {
+type SubmitReportFormProps = {
+    showCard?: boolean;
+}
+
+const SubmitReportForm = ({ showCard = true }: SubmitReportFormProps) => {
+    const formContent = (
+        <form action={createReport} className='flex flex-col gap-4'>
+
+            <div className='flex flex-col gap-2'>
+                <Label className='font-medium flex items-center gap-2'><LuPencilLine className='text-2xl' /> Title</Label>
+                <Input placeholder='e.g Student Sick in Hallway' name='title' required />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div className='flex flex-col gap-2'>
+                    <Label className='font-medium flex items-center gap-2'><LuBookText className='text-2xl' /> Emergency Type</Label>
+                    <Select name='type' required>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select Report Type" className='w-full'/>
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                {reportTypes.map((reportType) => (
+                                    <SelectItem key={reportType.id} value={reportType.name.toLowerCase()}>
+                                        <div className={`flex items-center gap-2 font-medium ${reportType.color}`}>
+                                            <reportType.icon className='text-2xl' />
+                                            {reportType.name}
+                                        </div>
+                                    </SelectItem>
+                                ))}
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <Label className='font-medium flex items-center gap-2'><LuBellElectric className='text-2xl' /> Priority</Label>
+                    <Select name='priority' required>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select Priority" className='w-full'/>
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectItem value="low"><FaCircle className='text-2xl text-green-500' /> Low</SelectItem>
+                                <SelectItem value="medium"><FaCircle className='text-2xl text-yellow-500' /> Medium</SelectItem>
+                                <SelectItem value="high"><FaCircle className='text-2xl text-red-500' /> High</SelectItem>
+                                <SelectItem value="critical"><FaCircle className='text-2xl text-purple-500' /> Critical</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                </div>
+
+            </div>
+
+            <div className='flex flex-col gap-2'>
+                <Label className='font-medium flex items-center gap-2'><LuMessageCircle className='text-2xl' /> Description</Label>
+                <Textarea name='description' className='resize-none' placeholder='e.g Student was seen vomiting on the school hallway, Please call for help' required />
+            </div>
+
+            <div className='flex flex-col gap-2'>
+                <Label className='font-medium flex items-center gap-2'><LuMapPin className='text-2xl' /> Location</Label>
+                <Input placeholder='e.g Main Building, Room 101' name='location' required />
+            </div>
+
+
+            <SubmitReportButton />
+        </form>
+    )
+    
+    if (!showCard) {
+        return formContent
+    }
+
     return (
         <Card className='max-w-[800px] w-full'>
             <CardHeader>
@@ -48,68 +121,7 @@ const SubmitReportForm = () => {
                 <CardDescription className='text-sm text-blue-400 font-medium'>Report will be under review by the administrators upon submission.</CardDescription>
             </CardHeader>
             <CardContent>
-                <form action={createReport} className='flex flex-col gap-4'>
-
-                    <div className='flex flex-col gap-2'>
-                        <Label className='font-medium flex items-center gap-2'><LuPencilLine className='text-2xl' /> Title</Label>
-                        <Input placeholder='e.g Student Sick in Hallway' name='title' required />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                        <div className='flex flex-col gap-2'>
-                            <Label className='font-medium flex items-center gap-2'><LuBookText className='text-2xl' /> Emergency Type</Label>
-                            <Select name='type' required>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select Report Type" className='w-full'/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        {reportTypes.map((reportType) => (
-                                            <SelectItem key={reportType.id} value={reportType.name.toLowerCase()}>
-                                                <div className={`flex items-center gap-2 font-medium ${reportType.color}`}>
-                                                    <reportType.icon className='text-2xl' />
-                                                    {reportType.name}
-                                                </div>
-                                            </SelectItem>
-                                        ))}
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className='flex flex-col gap-2'>
-                            <Label className='font-medium flex items-center gap-2'><LuBellElectric className='text-2xl' /> Priority</Label>
-                            <Select name='priority' required>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select Priority" className='w-full'/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="low"><FaCircle className='text-2xl text-green-500' /> Low</SelectItem>
-                                        <SelectItem value="medium"><FaCircle className='text-2xl text-yellow-500' /> Medium</SelectItem>
-                                        <SelectItem value="high"><FaCircle className='text-2xl text-red-500' /> High</SelectItem>
-                                        <SelectItem value="critical"><FaCircle className='text-2xl text-purple-500' /> Critical</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                    </div>
-
-                    <div className='flex flex-col gap-2'>
-                        <Label className='font-medium flex items-center gap-2'><LuMessageCircle className='text-2xl' /> Description</Label>
-                        <Textarea name='description' className='resize-none' placeholder='e.g Student was seen vomiting on the school hallway, Please call for help' required />
-                    </div>
-
-                    <div className='flex flex-col gap-2'>
-                        <Label className='font-medium flex items-center gap-2'><LuMapPin className='text-2xl' /> Location</Label>
-                        <Input placeholder='e.g Main Building, Room 101' name='location' required />
-                    </div>
-
-
-                    <SubmitReportButton />
-                </form>
+                {formContent}
             </CardContent>
         </Card>
     )

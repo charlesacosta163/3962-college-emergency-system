@@ -4,6 +4,7 @@ import React from 'react'
 
 import { LuBriefcaseMedical, LuFlame, LuBuilding, LuSun, LuShield, LuMessageCircle, LuTriangleAlert, LuPencil, LuClipboardList, LuMapPin } from "react-icons/lu";
 import { BsIncognito } from "react-icons/bs";
+import EditReportForm from '@/components/forms/edit-report-form';
 
 type UserSubmittedCardProps = {
   report: any;
@@ -62,8 +63,7 @@ const priorityColors = {
 }
 
 const statusColors = {
-  'pending': 'bg-yellow-500',
-  'under review': 'bg-blue-500',
+  'provisional': 'bg-yellow-500',
   'active': 'bg-green-500',
   'resolved': 'bg-pink-600',
   'rejected': 'bg-gray-500'
@@ -73,7 +73,7 @@ const UserSubmittedCard = ({ report }: UserSubmittedCardProps) => {
   const typeConfig = emergencyTypeColors[report.type as keyof typeof emergencyTypeColors] || emergencyTypeColors['other']
   const TypeIcon = typeConfig.icon
   const priorityColor = priorityColors[report.priority as keyof typeof priorityColors] || priorityColors['medium']
-  const statusColor = statusColors[report.status as keyof typeof statusColors] || statusColors['pending']
+  const statusColor = statusColors[report.status as keyof typeof statusColors] || statusColors['provisional']
   
   const formattedDate = new Date(report.created_at).toLocaleDateString('en-US', { 
     year: 'numeric', 
@@ -114,7 +114,7 @@ const UserSubmittedCard = ({ report }: UserSubmittedCardProps) => {
         
        </div>
       
-       <Button variant='outline'><LuPencil />Edit Report</Button>
+       <EditReportForm report={report} />
 
     </div>
   )

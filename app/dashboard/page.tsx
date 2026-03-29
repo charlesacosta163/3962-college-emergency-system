@@ -16,9 +16,11 @@ export default async function DashboardPage() {
 
   const profile = await getUserProfile()
 
+  console.log(profile);
+
   return (
     <div>
-       {profile.data?.role.toLowerCase() === 'admin' ? <AdminDashboard /> : <ReporterDashboard />}
+       {profile?.role.toLowerCase() === 'admin' ? <AdminDashboard /> : <ReporterDashboard />}
     </div>
   )
 }
